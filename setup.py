@@ -135,7 +135,7 @@ setup(
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(),
-    ext_modules=[CMakeExtension("_tiny_fmm")],
+    ext_modules=[CMakeExtension("pybind11_tiny_fmm")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     python_requires=">=3.7",

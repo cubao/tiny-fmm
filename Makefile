@@ -38,7 +38,7 @@ test_in_linux:
 
 PYTHON ?= python3
 python_install:
-	$(PYTHON) setup.py install
+	$(PYTHON) setup.py install --force
 python_build:
 	$(PYTHON) setup.py bdist_wheel
 python_sdist:
@@ -47,6 +47,8 @@ python_test:
 	$(PYTHON) -m tiny_fmm
 	python3 -m pip install pytest
 	pytest tests
+python_list:
+	unzip -l dist/tiny_fmm-*.whl
 
 # conda create -y -n py36 python=3.6
 # conda create -y -n py37 python=3.7

@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.4...3.18)
-project(_tiny_fmm)
+project(tiny_fmm)
 
 add_subdirectory(pybind11)
 pybind11_add_module(pybind11_tiny_fmm src/main.cpp)

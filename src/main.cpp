@@ -7,7 +7,7 @@ int add(int i, int j) { return i + j; }
 
 namespace py = pybind11;
 
-PYBIND11_MODULE(_tiny_fmm, m)
+PYBIND11_MODULE(pybind11_tiny_fmm, m)
 {
     m.def("add", &add, R"pbdoc(
         Add two numbers
