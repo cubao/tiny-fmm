@@ -26,7 +26,7 @@ docs_serve:
 	mkdocs serve -a 0.0.0.0:8088
 
 DOCKER_TAG_WINDOWS ?= ghcr.io/cubao/build-env-windows-x64:v0.0.1
-DOCKER_TAG_LINUX ?= ghcr.io/cubao/build-env-manylinux2014-x64:v0.0.1
+DOCKER_TAG_LINUX ?= ghcr.io/cubao/build-env-manylinux2014-x64:v0.0.2
 DOCKER_TAG_MACOS ?= ghcr.io/cubao/build-env-macos-arm64:v0.0.1
 
 test_in_win:
@@ -44,11 +44,7 @@ python_build:
 python_sdist:
 	$(PYTHON) setup.py sdist
 python_test:
-	$(PYTHON) -c 'from pybind11_rdp import rdp; print(rdp([[1, 1], [2, 2], [3, 3], [4, 4]]))'
-	$(PYTHON) -c 'import cubao_cmake_example; print(cubao_cmake_example.add(1, 2))'
-	$(PYTHON) -m cubao_cmake_example add 1 2
-	$(PYTHON) -m cubao_cmake_example subtract 9 4
-	$(PYTHON) -m cubao_cmake_example pure_python_func --arg1=43234
+	$(PYTHON) -m tiny_fmm
 	python3 -m pip install pytest
 	pytest tests
 
@@ -68,10 +64,12 @@ python_build_py39:
 	PYTHON=python conda run --no-capture-output -n py39 make python_build
 python_build_py310:
 	PYTHON=python conda run --no-capture-output -n py310 make python_build
-python_build_all: python_build_py36 python_build_py37 python_build_py38 python_build_py39 python_build_py310
+python_build_py311:
+	PYTHON=python conda run --no-capture-output -n py311 make python_build
+python_build_all: python_build_py36 python_build_py37 python_build_py38 python_build_py39 python_build_py310 python_build_py311
 python_build_all_in_linux:
 	docker run --rm -w `pwd` -v `pwd`:`pwd` -v `pwd`/build/win:`pwd`/build -it $(DOCKER_TAG_LINUX) make python_build_all repair_wheels
-python_build_all_in_macos: python_build_py38 python_build_py39 python_build_py310
+python_build_all_in_macos: python_build_py38 python_build_py39 python_build_py310 python_build_py311
 python_build_all_in_windows: python_build_all
 
 repair_wheels:

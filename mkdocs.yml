@@ -1,9 +1,9 @@
-site_name: cmake-example
-site_url: https://cmake-example.readthedocs.io
-site_description: Example pybind11 module built with a CMake-based build system.
+site_name: tiny-fmm
+site_url: https://tiny-fmm.readthedocs.io
+site_description: A standalone version of fmm
 site_author: district10
 
-repo_url: https://github.com/cubao/cmake_example
+repo_url: https://github.com/cubao/tiny-fmm
 edit_uri: blob/master/docs/
 
 theme: readthedocs

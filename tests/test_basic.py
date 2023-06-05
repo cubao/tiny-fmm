@@ -1,4 +1,4 @@
-import cubao_cmake_example as m
+import tiny_fmm as m
 
 
 def test_main():
