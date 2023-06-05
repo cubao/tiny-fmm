@@ -126,7 +126,7 @@ class CMakeBuild(build_ext):
 # The information here can also be placed in setup.cfg - better separation of
 # logic and declaration, and simpler if you include description/version in a file.
 setup(
-    name="tiny-fmm",
+    name="tiny_fmm",
     version="0.0.1",
     author="tzx",
     author_email="dvorak4tzx@gmail.com",
@@ -135,7 +135,7 @@ setup(
     long_description=open("README.md", encoding="utf-8").read(),
     long_description_content_type="text/markdown",
     packages=find_packages(),
-    ext_modules=[CMakeExtension("pybind11_tiny_fmm")],
+    ext_modules=[CMakeExtension("tiny_fmm")],
     cmdclass={"build_ext": CMakeBuild},
     zip_safe=False,
     python_requires=">=3.7",
