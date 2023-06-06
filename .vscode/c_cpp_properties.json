@@ -6,6 +6,9 @@
             "compilerPath": "/usr/bin/clang",
             "cStandard": "c11",
             "cppStandard": "c++17",
+            "includePath": [
+                "${workspaceFolder}/3rdparty"
+            ],
             "intelliSenseMode": "clang-x64",
             "compileCommands": "${workspaceFolder}/build/compile_commands.json"
         }
