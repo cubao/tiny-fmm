@@ -1,5 +1,9 @@
 PROJECT_SOURCE_DIR ?= $(abspath ./)
 PROJECT_NAME ?= $(shell basename $(PROJECT_SOURCE_DIR))
+BUILD_DIR ?= $(PROJECT_SOURCE_DIR)/build
+INSTALL_DIR ?= $(BUILD_DIR)/install
+NUM_JOB ?= 8
+BUILD_TYPE ?= Release
 
 all:
 	@echo nothing special
@@ -15,9 +19,14 @@ lint:
 lint_install:
 	pre-commit install
 
+CMAKE_ARGS ?= \
+	-DCMAKE_INSTALL_PREFIX=$(INSTALL_DIR) \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
 build:
-	mkdir -p build && cd build && \
-	cmake .. && make
+	mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && \
+	cmake $(PROJECT_SOURCE_DIR) $(CMAKE_ARGS) && \
+	make -j $(NUM_JOB) && make install
 .PHONY: build
 
 docs_build:
@@ -35,6 +44,15 @@ test_in_mac:
 	docker run --rm -w `pwd` -v `pwd`:`pwd` -v `pwd`/build/mac:`pwd`/build -it $(DOCKER_TAG_MACOS) bash
 test_in_linux:
 	docker run --rm -w `pwd` -v `pwd`:`pwd` -v `pwd`/build/linux:`pwd`/build -it $(DOCKER_TAG_LINUX) bash
+
+DEV_CONTAINER_NAME ?= $(USER)_$(subst /,_,$(PROJECT_NAME)____$(PROJECT_SOURCE_DIR))
+DEV_CONTAINER_IMAG ?= $(DOCKER_TAG_LINUX)
+test_in_dev_container:
+	docker ps | grep $(DEV_CONTAINER_NAME) \
+		&& docker exec -it $(DEV_CONTAINER_NAME) bash \
+		|| docker run --rm --name $(DEV_CONTAINER_NAME) \
+			--network host --security-opt seccomp=unconfined \
+			-v `pwd`:`pwd` -w `pwd` -it $(DEV_CONTAINER_IMAG) bash
 
 PYTHON ?= python3
 python_install:
