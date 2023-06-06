@@ -1,8 +1,6 @@
 // modified version of
 // https://github.com/cubao/headers/tree/main/include/cubao/pybind11_polyline_ruler.hpp
 
-#pragma once
-
 #include <pybind11/eigen.h>
 #include <pybind11/iostream.h>
 #include <pybind11/pybind11.h>
