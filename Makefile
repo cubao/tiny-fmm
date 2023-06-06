@@ -1,5 +1,9 @@
 PROJECT_SOURCE_DIR ?= $(abspath ./)
 PROJECT_NAME ?= $(shell basename $(PROJECT_SOURCE_DIR))
+BUILD_DIR ?= $(PROJECT_SOURCE_DIR)/build
+INSTALL_DIR ?= $(BUILD_DIR)/install
+NUM_JOB ?= 8
+BUILD_TYPE ?= Release
 
 all:
 	@echo nothing special
@@ -15,9 +19,14 @@ lint:
 lint_install:
 	pre-commit install
 
+CMAKE_ARGS ?= \
+	-DCMAKE_INSTALL_PREFIX=$(INSTALL_DIR) \
+	-DBUILD_SHARED_LIBS=OFF \
+	-DCMAKE_BUILD_TYPE=$(BUILD_TYPE)
 build:
-	mkdir -p build && cd build && \
-	cmake .. && make
+	mkdir -p $(BUILD_DIR) && cd $(BUILD_DIR) && \
+	cmake $(PROJECT_SOURCE_DIR) $(CMAKE_ARGS) && \
+	make -j $(NUM_JOB) && make install
 .PHONY: build
 
 docs_build:

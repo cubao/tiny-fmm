@@ -7,6 +7,11 @@ int add(int i, int j) { return i + j; }
 
 namespace py = pybind11;
 
+namespace cubao
+{
+void bind_polyline_ruler(py::module &m);
+}
+
 PYBIND11_MODULE(pybind11_tiny_fmm, m)
 {
     m.def("add", &add, R"pbdoc(
@@ -21,6 +26,8 @@ PYBIND11_MODULE(pybind11_tiny_fmm, m)
 
         Some other explanation about the subtract function.
     )pbdoc");
+
+    cubao::bind_polyline_ruler(m);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
