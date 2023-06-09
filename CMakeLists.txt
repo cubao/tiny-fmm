@@ -18,8 +18,13 @@ endif()
 include_directories(3rdparty src)
 
 set(HEADER_ROOT "${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME}")
-file(GLOB_RECURSE HEADERS src/**/*.hpp)
-file(GLOB_RECURSE SOURCES src/**/*.cpp)
+# file(GLOB_RECURSE HEADERS src/**/*.hpp) file(GLOB_RECURSE SOURCES
+# src/**/*.cpp)
+set(HEADERS # files
+    src/tiny_fmm/dummy.hpp)
+set(SOURCES # files
+    src/tiny_fmm/dummy.cpp)
+
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 install(
   TARGETS ${PROJECT_NAME}
