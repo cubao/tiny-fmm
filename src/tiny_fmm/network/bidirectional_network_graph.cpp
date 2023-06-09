@@ -1,3 +1,4 @@
+/*
 #include "network/bidirectional_network_graph.hpp"
 #include "network/heap.hpp"
 #include "network/network.hpp"
@@ -283,3 +284,4 @@ BidirectionalNetworkGraph::search_edges_within_dist_ft_edge(EdgeID eid,
     result.insert(temp.begin(), temp.end());
     return result;
 };
+*/

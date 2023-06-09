@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -106,3 +107,4 @@ class Heap
 }; // namespace FMM
 
 #endif
+* /

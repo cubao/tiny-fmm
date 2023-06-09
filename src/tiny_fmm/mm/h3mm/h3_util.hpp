@@ -1,3 +1,4 @@
+/*
 #ifndef H3_UTIL_HEADER
 #define H3_UTIL_HEADER
 
@@ -87,3 +88,4 @@ std::vector<HexIndex> hexpath(const HexIndex &start, const HexIndex &end)
 }; // namespace MM
 }; // namespace FMM
 #endif
+*/

@@ -1,3 +1,4 @@
+/*
 //
 // Created by Can Yang on 2020/4/1.
 //
@@ -90,3 +91,4 @@ void FMMApp::run()
                 points_matched / time_spent_exclude_input);
     SPDLOG_INFO("Time takes {}", time_spent);
 };
+*/

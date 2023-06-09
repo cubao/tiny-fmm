@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -121,3 +122,4 @@ void TransitionGraph::print_optimal_info()
 };
 
 std::vector<TGLayer> &TransitionGraph::get_layers() { return layers; }
+* /

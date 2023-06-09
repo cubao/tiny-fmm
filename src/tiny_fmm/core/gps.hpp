@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -42,3 +43,4 @@ struct Trajectory
 
 } // namespace FMM
 #endif /* FMM_GPS_HPP */
+* /

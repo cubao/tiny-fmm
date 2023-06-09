@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -31,3 +32,4 @@ static const std::vector<std::string> LOG_LEVESLS{
 }; // namespace FMM
 
 #endif // MM_DEBUG_HPP
+* /

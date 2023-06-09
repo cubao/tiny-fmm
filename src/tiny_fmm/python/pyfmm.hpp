@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -54,3 +55,4 @@ struct PyMatchResult
 }; // namespace FMM
 
 #endif // FMM_SRC_PYTHON_PYFMM_HPP_
+* /

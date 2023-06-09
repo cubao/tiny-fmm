@@ -1,3 +1,4 @@
+/*
 #ifndef H3_INCLUDE_HEADER
 #define H3_INCLUDE_HEADER
 #ifdef __cplusplus
@@ -11,3 +12,4 @@ extern "C" {
 }
 #endif
 #endif
+*/

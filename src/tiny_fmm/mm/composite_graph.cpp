@@ -1,3 +1,4 @@
+/*
 #include "mm/composite_graph.hpp"
 #include "util/debug.hpp"
 
@@ -184,3 +185,4 @@ bool CompositeGraph::check_dummy_node(NodeIndex u) const
 {
     return u >= num_vertices;
 }
+*/

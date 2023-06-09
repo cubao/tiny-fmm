@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -71,3 +72,4 @@ typedef std::unordered_map<NodeIndex, double> DistanceMap;
 } // namespace FMM
 
 #endif // FMM_GRAPH_TYPE_HPP
+* /

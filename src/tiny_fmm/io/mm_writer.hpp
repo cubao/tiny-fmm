@@ -7,6 +7,7 @@
  * @author: Can Yang
  * @version: 2017.11.11
  */
+/*
 
 #ifndef FMM_MM_WRITER_HPP
 #define FMM_MM_WRITER_HPP
@@ -80,3 +81,4 @@ class CSVMatchResultWriter : public MatchResultWriter
 }; // namespace IO
 } // namespace FMM
 #endif // FMM_MM_WRITER_HPP
+*/

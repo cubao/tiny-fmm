@@ -1,3 +1,4 @@
+/*
 #ifndef FMM_BIDIRECTIONAL_NETWORK_GRAPH_HPP
 #define FMM_BIDIRECTIONAL_NETWORK_GRAPH_HPP
 
@@ -43,3 +44,4 @@ class BidirectionalNetworkGraph : public NetworkGraph
 }; // namespace FMM
 
 #endif
+*/

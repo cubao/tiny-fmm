@@ -1,3 +1,4 @@
+/*
 #include "mm/fmm/ubodt_gen_app_config.hpp"
 #include "util/util.hpp"
 #include "util/debug.hpp"
@@ -169,3 +170,4 @@ bool UBODTGenAppConfig::is_binary_output() const
     }
     return false;
 }
+*/

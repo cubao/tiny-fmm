@@ -1,3 +1,4 @@
+/*
 #include "util/util.hpp"
 
 #include <iostream>
@@ -191,3 +192,4 @@ std::istream &safe_get_line(std::istream &is, std::string &t, char delim)
 
 } // namespace UTIL
 } // namespace FMM
+*/

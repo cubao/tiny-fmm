@@ -1,3 +1,4 @@
+/*
 #ifndef H3_TYPE_HEADER
 #define H3_TYPE_HEADER
 
@@ -26,3 +27,4 @@ struct H3MatchResult
 }; // namespace MM
 }; // namespace FMM
 #endif
+*/

@@ -1,3 +1,4 @@
+/*
 /**
  * 2020-11-25 Remove linestring2ogr, wkb dependency
  */
@@ -47,3 +48,4 @@ FMM::CORE::LineString FMM::CORE::wkt2linestring(const std::string &wkt)
     boost::geometry::read_wkt(wkt, line.get_geometry());
     return line;
 };
+* /

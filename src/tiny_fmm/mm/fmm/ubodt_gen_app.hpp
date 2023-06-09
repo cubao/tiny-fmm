@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -49,3 +50,4 @@ class UBODTGenApp
 } // namespace FMM
 
 #endif // FMM_SRC_MM_FMM_UBODT_GEN_APP_HPP_
+* /

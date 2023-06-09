@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -74,3 +75,4 @@ class FMMAppConfig
 } // namespace FMM
 
 #endif // FMM_SRC_MM_FMM_FMM_APP_CONFIG_HPP_
+* /

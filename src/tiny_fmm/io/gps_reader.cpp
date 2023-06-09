@@ -4,6 +4,7 @@
  * @author: Can Yang
  * @version: 2017.11.11
  */
+/*
 #include "io/gps_reader.hpp"
 #include "util/debug.hpp"
 #include "util/util.hpp"
@@ -354,3 +355,4 @@ GPSReader::GPSReader(const FMM::CONFIG::GPSConfig &config)
         throw std::runtime_error(message);
     }
 };
+*/

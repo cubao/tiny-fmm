@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -182,3 +183,4 @@ class CompositeGraph
 } // namespace MM
 } // namespace FMM
 #endif
+* /

@@ -1,3 +1,4 @@
+/*
 #include "network/network.hpp"
 #include "util/debug.hpp"
 #include "util/util.hpp"
@@ -520,3 +521,4 @@ void Network::append_segs_to_line(LineString *line, const LineString &segs,
         }
     }
 }
+*/

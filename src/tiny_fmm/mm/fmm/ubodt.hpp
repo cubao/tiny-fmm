@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -165,3 +166,4 @@ class UBODT
 } // namespace FMM
 
 #endif // FMM_SRC_FMM_FFMM_UBODT_H_
+/ * /

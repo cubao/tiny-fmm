@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -65,3 +66,4 @@ class NodeTree
 }; // namespace FMM
 
 #endif // FMM_RTREE_HPP
+* /
