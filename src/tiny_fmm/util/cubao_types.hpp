@@ -1,9 +1,14 @@
 #ifndef FMM_CUBAO_TYPES_HPP
 #define FMM_CUBAO_TYPES_HPP
 
-#include <mapbox/geojson/rapidjson.hpp>
-using RapidjsonValue = mapbox::geojson::rapidjson_value;
-using RapidjsonAllocator = mapbox::geojson::rapidjson_allocator;
-using RapidjsonDocument = mapbox::geojson::rapidjson_document;
+#include <rapidjson/document.h>
+
+// Use the CrtAllocator, because the MemoryPoolAllocator is broken on ARM
+// https://github.com/miloyip/rapidjson/issues/200, 301, 388
+using RapidjsonAllocator = rapidjson::CrtAllocator;
+using RapidjsonDocument =
+    rapidjson::GenericDocument<rapidjson::UTF8<>, RapidjsonAllocator>;
+using RapidjsonValue =
+    rapidjson::GenericValue<rapidjson::UTF8<>, RapidjsonAllocator>;
 
 #endif

@@ -15,15 +15,15 @@ if(NOT CMAKE_RUNTIME_OUTPUT_DIRECTORY)
   set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_BINARY_DIR}/bin)
 endif()
 
-include_directories(3rdparty src)
+include_directories(3rdparty src src/tiny_fmm)
 
 set(HEADER_ROOT "${PROJECT_SOURCE_DIR}/src/${PROJECT_NAME}")
 # file(GLOB_RECURSE HEADERS src/**/*.hpp) file(GLOB_RECURSE SOURCES
 # src/**/*.cpp)
 set(HEADERS # files
-    src/tiny_fmm/dummy.hpp)
+    src/tiny_fmm/dummy.hpp src/tiny_fmm/network/network.hpp)
 set(SOURCES # files
-    src/tiny_fmm/dummy.cpp)
+    src/tiny_fmm/dummy.cpp src/tiny_fmm/network/network.cpp)
 
 add_library(${PROJECT_NAME} ${SOURCES} ${HEADERS})
 install(

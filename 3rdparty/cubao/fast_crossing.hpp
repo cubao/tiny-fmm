@@ -4,6 +4,7 @@
 #include "polyline_ruler.hpp"
 #include "flatbush.h"
 #include <set>
+#include <map>
 #include <vector>
 #include <optional>
 
