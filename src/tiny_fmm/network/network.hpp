@@ -1,13 +1,14 @@
-#pragma once
-
 /**
  * Fast map matching.
  *
  * Network class
  *
- * based on https://github.com/cubao/fmm/blob/master/src/network/network.hpp
- * original author: Can Yang
+ * @author: Can Yang
+ * @version: 2017.11.11
  */
+
+#ifndef FMM_NETWORK_HPP
+#define FMM_NETWORK_HPP
 
 #include "network/type.hpp"
 #include "config/network_config.hpp"
@@ -241,3 +242,4 @@ class Network
 }; // Network
 } // namespace NETWORK
 } // namespace FMM
+#endif /* FMM_NETWORK_HPP */
