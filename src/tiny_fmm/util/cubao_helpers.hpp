@@ -1,4 +1,3 @@
-/*
 #ifndef FMM_CUBAO_HELPERS_HPP
 #define FMM_CUBAO_HELPERS_HPP
 
@@ -91,4 +90,3 @@ inline std::string dumps(const RapidjsonValue &json, bool indent = false)
 
 } // namespace cubao
 #endif
-*/

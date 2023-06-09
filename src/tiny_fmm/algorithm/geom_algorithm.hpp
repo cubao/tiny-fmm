@@ -228,4 +228,4 @@ FMM::CORE::LineString cutoffseg(const FMM::CORE::LineString &linestring,
 } // namespace FMM
 #endif /* FMM_ALGORITHM_HPP */
 
-* /
+*/

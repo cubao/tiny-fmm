@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -181,4 +180,3 @@ class FastMapMatch
 } // namespace FMM
 
 #endif // FMM_FMM_ALGORITHM_H_
-* /

@@ -1,4 +1,3 @@
-/*
 #include "config/result_config.hpp"
 #include "util/util.hpp"
 #include "util/debug.hpp"
@@ -249,5 +248,3 @@ void FMM::CONFIG::ResultConfig::register_help(std::ostringstream &oss)
     oss << "  opath,cpath,tpath,mgeom,pgeom,\n";
     oss << "  offset,error,spdist,tp,ep,length,duration,speed,all\n";
 };
-
-*/

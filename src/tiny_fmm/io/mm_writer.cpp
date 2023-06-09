@@ -1,4 +1,3 @@
-/*
 /**
  * Content
  * Definition of MatchResultWriter Class, which contains functions for
@@ -205,4 +204,3 @@ void CSVMatchResultWriter::write_result(const FMM::CORE::Trajectory &traj,
 
 } // namespace IO
 } // namespace FMM
-* /

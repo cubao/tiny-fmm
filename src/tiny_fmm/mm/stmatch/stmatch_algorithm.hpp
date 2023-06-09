@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -193,4 +192,3 @@ class STMATCH
 } // namespace FMM
 
 #endif
-* /

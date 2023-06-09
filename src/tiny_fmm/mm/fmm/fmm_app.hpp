@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -47,4 +46,3 @@ class FMMApp
 } // namespace FMM
 
 #endif
-* /

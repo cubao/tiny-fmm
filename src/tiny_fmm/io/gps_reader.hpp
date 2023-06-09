@@ -6,7 +6,6 @@
  * @author: Can Yang
  * @version: 2017.11.11
  */
-/*
 
 #ifndef FMM_GPS_READER_HPP
 #define FMM_GPS_READER_HPP
@@ -289,4 +288,3 @@ class GPSReader
 } // namespace FMM
 
 #endif // FMM_READER_HPP
-*/

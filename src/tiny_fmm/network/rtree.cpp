@@ -1,4 +1,3 @@
-/*
 #include "network/rtree.hpp"
 
 #include <boost/geometry/index/rtree.hpp>
@@ -32,4 +31,3 @@ int NodeTree::query_point_radius(Point &p, double radius, unsigned int *id)
 };
 
 int NodeTree::getSize() { return size; };
-*/

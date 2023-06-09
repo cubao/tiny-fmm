@@ -1,4 +1,3 @@
-/*
 #ifndef H3MM_HEADER
 #define H3MM_HEADER
 
@@ -229,4 +228,3 @@ class H3MM
 } // namespace MM
 } // namespace FMM
 #endif
-* /

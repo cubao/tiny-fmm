@@ -1,4 +1,3 @@
-/*
 //
 // Created by Can Yang on 2020/3/22.
 //
@@ -35,19 +34,19 @@ UBODT::UBODT(int buckets_arg, int multiplier_arg)
 UBODT::~UBODT()
 {
     /* Clean hashtable */
-SPDLOG_TRACE("Clean UBODT");
-int i;
-for (i = 0; i < buckets; ++i) {
-    Record *head = hashtable[i];
-    Record *curr;
-    while ((curr = head) != nullptr) {
-        head = head->next;
-        free(curr);
+    SPDLOG_TRACE("Clean UBODT");
+    int i;
+    for (i = 0; i < buckets; ++i) {
+        Record *head = hashtable[i];
+        Record *curr;
+        while ((curr = head) != nullptr) {
+            head = head->next;
+            free(curr);
+        }
     }
-}
-// Destory hash table pointer
-free(hashtable);
-SPDLOG_TRACE("Clean UBODT finished");
+    // Destory hash table pointer
+    free(hashtable);
+    SPDLOG_TRACE("Clean UBODT finished");
 }
 
 Record *UBODT::look_up(NodeIndex source, NodeIndex target) const
@@ -336,4 +335,3 @@ std::shared_ptr<UBODT> UBODT::read_ubodt_json(const std::string &filename,
     SPDLOG_INFO("Finish reading UBODT with rows {}", NUM_ROWS);
     return table;
 }
-/ * /

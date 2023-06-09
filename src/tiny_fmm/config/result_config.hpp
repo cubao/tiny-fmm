@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -110,5 +109,3 @@ struct ResultConfig
 } // namespace FMM
 
 #endif // FMM_SRC_CONFIG_RESULT_CONFIG_HPP_
-
-* /

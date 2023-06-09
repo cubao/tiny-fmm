@@ -1,4 +1,3 @@
-/*
 #ifndef H3MM_APP_HEADER
 #define H3MM_APP_HEADER
 
@@ -155,4 +154,3 @@ class H3MMApp
 } // namespace MM
 } // namespace FMM
 #endif
-* /

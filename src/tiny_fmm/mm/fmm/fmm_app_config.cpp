@@ -1,4 +1,3 @@
-/*
 //
 // Created by Can Yang on 2020/4/1.
 //
@@ -139,4 +138,3 @@ bool FMMAppConfig::validate() const
     SPDLOG_DEBUG("Validating done");
     return true;
 };
-*/

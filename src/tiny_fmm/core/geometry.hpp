@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -252,4 +251,3 @@ LineString wkt2linestring(const std::string &wkt);
 }; // namespace FMM
 
 #endif // FMM_GEOMTYPES_HPP
-* /

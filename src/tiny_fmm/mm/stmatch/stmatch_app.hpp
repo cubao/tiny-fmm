@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -46,4 +45,3 @@ class STMATCHApp
 } // namespace FMM
 
 #endif
-* /

@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -90,4 +89,3 @@ struct MatchResult
 }; // namespace FMM
 
 #endif // FMM_INCLUDE_FMM_FMM_RESULT_HPP_
-* /

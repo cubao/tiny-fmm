@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -91,5 +90,3 @@ struct GPSConfig
 } // namespace FMM
 
 #endif // FMM_SRC_CONFIG_GPS_CONFIG_HPP_
-
-* /

@@ -1,4 +1,3 @@
-/*
 #include "mm/stmatch/stmatch_algorithm.hpp"
 #include "algorithm/geom_algorithm.hpp"
 #include "util/debug.hpp"
@@ -463,4 +462,3 @@ C_Path STMATCH::build_cpath(const TGOpath &opath, std::vector<int> *indices,
     SPDLOG_DEBUG("Build cpath from optimal candidate path done");
     return cpath;
 }
-*/

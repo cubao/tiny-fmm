@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -74,5 +73,3 @@ struct NetworkConfig
 } // namespace FMM
 
 #endif // FMM_NETWORK_CONFIG_HPP_
-
-* /

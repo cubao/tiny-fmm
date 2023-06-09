@@ -1,4 +1,3 @@
-/*
 /**
  * Fast map matching.
  *
@@ -93,4 +92,3 @@ class UBODTGenAlgorithm
 }; // namespace FMM
 
 #endif // FMM_SRC_MM_FMM_UBODT_GEN_ALGORITHM_HPP_
-* /

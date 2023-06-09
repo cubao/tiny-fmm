@@ -1,4 +1,3 @@
-/*
 //
 // Created by Can Yang on 2020/4/1.
 //
@@ -280,4 +279,3 @@ void UBODTGenAlgorithm::write_result_binary(
                << r.cost;
     }
 }
-* /

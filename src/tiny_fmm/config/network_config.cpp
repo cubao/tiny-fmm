@@ -1,4 +1,3 @@
-/*
 #include "config/network_config.hpp"
 #include "util/util.hpp"
 #include "util/debug.hpp"
@@ -72,5 +71,3 @@ bool FMM::CONFIG::NetworkConfig::validate() const
     SPDLOG_CRITICAL("Network format not recognized {}", file);
     return false;
 }
-
-*/

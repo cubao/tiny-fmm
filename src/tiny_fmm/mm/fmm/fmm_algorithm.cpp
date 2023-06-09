@@ -1,4 +1,3 @@
-/*
 //
 // Created by Can Yang on 2020/3/22.
 //
@@ -364,4 +363,3 @@ void FastMapMatch::update_layer(int level, TGLayer *la_ptr, TGLayer *lb_ptr,
     }
     // SPDLOG_TRACE("Update layer done");
 }
-*/
