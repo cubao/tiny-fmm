@@ -1,3 +1,4 @@
+/*
 /**
  * Fast map matching.
  *
@@ -226,3 +227,5 @@ FMM::CORE::LineString cutoffseg(const FMM::CORE::LineString &linestring,
 } // namespace ALGORITHM
 } // namespace FMM
 #endif /* FMM_ALGORITHM_HPP */
+
+*/

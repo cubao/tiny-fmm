@@ -1,3 +1,4 @@
+/*
 #include "algorithm/geom_algorithm.hpp"
 #include "util/debug.hpp"
 
@@ -459,3 +460,4 @@ FMM::ALGORITHM::cutoffseg(const FMM::CORE::LineString &linestring,
     }
     return FMM::ALGORITHM::cutoffseg_unique(linestring, offset1, offset2);
 }
+*/
