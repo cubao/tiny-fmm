@@ -1,4 +1,3 @@
-/*
 #include "config/gps_config.hpp"
 #include "util/util.hpp"
 #include "util/debug.hpp"
@@ -129,4 +128,3 @@ bool FMM::CONFIG::GPSConfig::validate() const
     }
     return true;
 };
-*/
