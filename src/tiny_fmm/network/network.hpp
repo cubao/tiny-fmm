@@ -11,21 +11,16 @@
 #define FMM_NETWORK_HPP
 
 #include "network/type.hpp"
-#include "config/network_config.hpp"
 #include "core/gps.hpp"
 #include "util/cubao_types.hpp"
 #include "mm/mm_type.hpp"
-#include <ogrsf_frmts.h> // C++ API for GDAL
 #include <iostream>
 #include <math.h> // Calulating probability
 #include <iomanip>
 #include <algorithm>     // Partial sort copy
 #include <unordered_set> // Partial sort copy
 
-// Data structures for Rtree
-#include <boost/geometry/geometries/box.hpp>
-#include <boost/geometry/index/rtree.hpp>
-#include <boost/function_output_iterator.hpp>
+#include "cubao/fast_crossing.hpp"
 
 namespace FMM
 {
@@ -40,36 +35,7 @@ namespace NETWORK
 class Network
 {
   public:
-    /**
-     * Box of a edge
-     */
-    typedef boost::geometry::model::box<FMM::CORE::Point> boost_box;
-    /**
-     * Item stored in a node of Rtree
-     */
-    typedef std::pair<boost_box, Edge *> Item;
-    /**
-     * Rtree of road edges
-     */
-    typedef boost::geometry::index::rtree<Item,
-                                          boost::geometry::index::quadratic<16>>
-        Rtree;
-    /**
-     *  Constructor of Network
-     *
-     *  @param filename: the path to a network file in ESRI shapefile format
-     *  @param id_name: the name of the id field
-     *  @param source_name: the name of the source field
-     *  @param target_name: the name of the target field
-     *  @param mode: mode name, only applies to OSM network
-     *
-     */
     Network(){};
-    Network(const std::string &filename, const std::string &id_name = "id",
-            const std::string &source_name = "source",
-            const std::string &target_name = "target");
-    Network(const CONFIG::NetworkConfig &config)
-        : Network(config.file, config.id, config.source, config.target){};
     /**
      * Get number of nodes in the network
      * @return number of nodes
@@ -213,9 +179,6 @@ class Network
 
   private:
     RapidjsonValue __export_geojson() const;
-    void read_ogr_file(const std::string &filename, const std::string &id_name,
-                       const std::string &source_name,
-                       const std::string &target_name);
     /**
      * Concatenate a linestring segs to a linestring line, used in the
      * function complete_path_to_geometry
@@ -231,9 +194,9 @@ class Network
      * Build rtree for the network
      */
     void build_rtree_index();
-    int srid;                // Spatial reference id
-    Rtree rtree;             // Network rtree structure
-    std::vector<Edge> edges; // all edges in the network
+    bool is_wgs84 = true;
+    cubao::FastCrossing tree; // Network rtree structure
+    std::vector<Edge> edges;  // all edges in the network
     NodeIDVec node_id_vec;
     unsigned int num_vertices;
     NodeIndexMap node_map;

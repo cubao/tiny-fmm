@@ -12,6 +12,7 @@ all:
 clean:
 	@find . -maxdepth 1 ! -name Makefile ! -name . ! -name .. -exec rm -rf {} +
 
+# https://github.com/cubao/fmm/wiki/Sample-data
 pull: network.json
 network.json: | network.zip
 	unzip network.zip

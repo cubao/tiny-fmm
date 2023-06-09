@@ -16,7 +16,6 @@
 #include "util/util.hpp"
 #include "util/debug.hpp"
 #include "network/network.hpp"
-#include "config/result_config.hpp"
 
 #include <iostream>
 #include <fstream>

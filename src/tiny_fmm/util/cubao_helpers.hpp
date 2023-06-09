@@ -2,9 +2,6 @@
 #define FMM_CUBAO_HELPERS_HPP
 
 #include "util/cubao_types.hpp"
-#include <mapbox/geojson.hpp>
-#include <mapbox/geojson/rapidjson.hpp>
-#include <mapbox/geojson/value.hpp>
 
 #include "rapidjson/error/en.h"
 #include "rapidjson/filereadstream.h"
