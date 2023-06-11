@@ -4,8 +4,6 @@
 // -
 // https://github.com/cubao/headers/tree/main/include/cubao/pybind11_crs_transform.hpp
 
-#pragma once
-
 #include <pybind11/eigen.h>
 #include <pybind11/iostream.h>
 #include <pybind11/pybind11.h>
@@ -37,14 +35,16 @@ void bind_crs_transform(py::module &m)
              "llas"_a)
         // lla <-> enu
         .def("lla2enu", &lla2enu, "llas"_a, py::kw_only(), //
-             CUBAO_ARGV_DEFAULT_NONE(anchor_lla), "cheap_ruler"_a = true)
+             py::arg_v("anchor_lla", std::nullopt, "None"),
+             "cheap_ruler"_a = true)
         .def("enu2lla", &enu2lla, "enus"_a, py::kw_only(), //
              "anchor_lla"_a, "cheap_ruler"_a = true)
         // enu <-> ecef
         .def("enu2ecef", &enu2ecef, "enus"_a, py::kw_only(), //
              "anchor_lla"_a, "cheap_ruler"_a = false)
         .def("ecef2enu", &ecef2enu, "ecefs"_a, py::kw_only(), //
-             CUBAO_ARGV_DEFAULT_NONE(anchor_lla), "cheap_ruler"_a = false)
+             py::arg_v("anchor_lla", std::nullopt, "None"),
+             "cheap_ruler"_a = false)
         // T_ecef_enu
         .def("R_ecef_enu", &R_ecef_enu, "lon"_a, "lat"_a)
         .def("T_ecef_enu",
