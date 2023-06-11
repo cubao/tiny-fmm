@@ -30,7 +30,9 @@ PYBIND11_MODULE(pybind11_tiny_fmm, m)
         Some other explanation about the subtract function.
     )pbdoc");
 
-    cubao::bind_crs_transform(m);
+    auto tf = m.def_submodule("tf");
+
+    cubao::bind_crs_transform(tf);
     cubao::bind_fast_crossing(m);
     cubao::bind_flatbush(m);
     cubao::bind_polyline_ruler(m);
