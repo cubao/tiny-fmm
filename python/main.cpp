@@ -15,6 +15,12 @@ void bind_flatbush(py::module &m);
 void bind_polyline_ruler(py::module &m);
 } // namespace cubao
 
+
+namespace tinyfmm
+{
+void bind_tinyfmm_network(py::module &m);
+}
+
 PYBIND11_MODULE(pybind11_tiny_fmm, m)
 {
     m.def("add", &add, R"pbdoc(
@@ -36,6 +42,8 @@ PYBIND11_MODULE(pybind11_tiny_fmm, m)
     cubao::bind_fast_crossing(m);
     cubao::bind_flatbush(m);
     cubao::bind_polyline_ruler(m);
+
+    tinyfmm::bind_tinyfmm_network(m);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

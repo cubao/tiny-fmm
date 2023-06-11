@@ -4,6 +4,7 @@ import numpy as np
 
 import tiny_fmm as m
 from tiny_fmm import FastCrossing, LineSegment, intersect_segments, tf
+from tiny_fmm import Network
 
 """
 some tests migrated from
@@ -173,3 +174,8 @@ def test_flatbush():
     assert len(hits) == 3
     hits = bush.search(min=[10, 10], max=[-10, -10])
     assert len(hits) == 0
+
+
+def test_tinyfmm_network():
+    n = Network()
+    print(n)
