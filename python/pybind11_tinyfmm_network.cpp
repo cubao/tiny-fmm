@@ -14,10 +14,9 @@ using rvp = py::return_value_policy;
 
 void bind_tinyfmm_network(py::module &m)
 {
-    py::class_<FMM::NETWORK::Network>(m, "Network", py::module_local())      //
+    py::class_<FMM::NETWORK::Network>(m, "Network", py::module_local()) //
         .def(py::init<>())
         //
         ;
-
 }
-} // namespace cubao
+} // namespace tinyfmm

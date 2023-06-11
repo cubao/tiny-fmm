@@ -3,8 +3,7 @@ import time
 import numpy as np
 
 import tiny_fmm as m
-from tiny_fmm import FastCrossing, LineSegment, intersect_segments, tf
-from tiny_fmm import Network
+from tiny_fmm import FastCrossing, LineSegment, Network, intersect_segments, tf
 
 """
 some tests migrated from

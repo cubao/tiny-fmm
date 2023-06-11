@@ -15,7 +15,6 @@ void bind_flatbush(py::module &m);
 void bind_polyline_ruler(py::module &m);
 } // namespace cubao
 
-
 namespace tinyfmm
 {
 void bind_tinyfmm_network(py::module &m);
