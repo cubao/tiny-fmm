@@ -755,7 +755,8 @@ inline void douglas_simplify(const Eigen::Ref<const RowVectors> &coords,
 }
 
 inline void douglas_simplify_iter(const Eigen::Ref<const RowVectors> &coords,
-                                  Eigen::VectorXi &to_keep, const double epsilon)
+                                  Eigen::VectorXi &to_keep,
+                                  const double epsilon)
 {
     std::queue<std::pair<int, int>> q;
     q.push({0, to_keep.size() - 1});

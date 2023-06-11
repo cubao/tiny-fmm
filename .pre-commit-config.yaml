@@ -16,7 +16,7 @@ ci:
   autoupdate_commit_msg: "chore: update pre-commit hooks"
   autofix_commit_msg: "style: pre-commit fixes"
 
-exclude: '^3rdparty/.*$'
+exclude: '(?x)^3rdparty/(Eigen/.*|boost/.*|dbg.h|doctest.h|rapidjson/.*|spdlog/.*)$'
 
 repos:
 # Standard hooks
