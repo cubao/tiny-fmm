@@ -82,9 +82,8 @@ def test_intersections():
     assert np.all(pt == [0, 0, 15]) and t == 0.5 and s == 0.5 and half_span == -5.0
 
 
-def test_fast_crossing():
+def __sample_fc():
     fc = FastCrossing()
-
     # add your polylines
     """
                     2 C
@@ -98,9 +97,13 @@ def test_fast_crossing():
     """
     fc.add_polyline(np.array([[0.0, 0.0], [5.0, 0.0]]))  # AB
     fc.add_polyline(np.array([[2.5, 2.0], [2.5, 1.0], [2.5, -2.0]]))  # CDE
-
     # build index
     fc.finish()
+    return fc
+
+
+def test_fast_crossing():
+    fc = __sample_fc()
 
     # num_poylines
     assert 2 == fc.num_poylines()
@@ -148,3 +151,25 @@ def test_fast_crossing():
     polyline2 = np.column_stack((polyline, np.zeros(len(polyline))))
     ret2 = np.array(fc.intersections(polyline2[:, :2]))
     assert str(ret) == str(ret2)
+
+
+def test_flatbush():
+    fc = __sample_fc()
+    bush = fc.bush()
+    hits = bush.search(min=[4, -1], max=[6, 1])
+    for h in hits:
+        bbox = bush.box(h)
+        label = bush.label(h)
+        print(h, bbox, label)
+    assert len(hits) == 1 and np.all(bush.label(hits[0]) == [0, 0])
+    hits = bush.search(min=[2, -3], max=[3, -1])
+    for h in hits:
+        bbox = bush.box(h)
+        label = bush.label(h)
+        print(h, bbox, label)
+    assert len(hits) == 1 and np.all(bush.label(hits[0]) == [1, 1])
+
+    hits = bush.search(min=[-10, -10], max=[10, 10])
+    assert len(hits) == 3
+    hits = bush.search(min=[10, 10], max=[-10, -10])
+    assert len(hits) == 0
