@@ -9,8 +9,11 @@ namespace py = pybind11;
 
 namespace cubao
 {
+void bind_crs_transform(py::module &m);
+void bind_fast_crossing(py::module &m);
+void bind_flatbush(py::module &m);
 void bind_polyline_ruler(py::module &m);
-}
+} // namespace cubao
 
 PYBIND11_MODULE(pybind11_tiny_fmm, m)
 {
@@ -27,6 +30,9 @@ PYBIND11_MODULE(pybind11_tiny_fmm, m)
         Some other explanation about the subtract function.
     )pbdoc");
 
+    cubao::bind_crs_transform(m);
+    cubao::bind_fast_crossing(m);
+    cubao::bind_flatbush(m);
     cubao::bind_polyline_ruler(m);
 
 #ifdef VERSION_INFO
