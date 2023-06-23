@@ -20,14 +20,13 @@ namespace FMM
 {
 namespace NETWORK
 {
-
-typedef long long NodeID; /**< Node ID in the network, can be discontinuous
-                          int */
-typedef long long EdgeID; /**< Edge ID in the network, can be negative to
-                          distinguish edges in two directions */
-typedef unsigned int NodeIndex; /**< Node Index in the network, range
+typedef int64_t NodeID;    /**< Node ID in the network, can be discontinuous
+                             int */
+typedef int64_t EdgeID;    /**< Edge ID in the network, can be negative to
+                             distinguish edges in two directions */
+typedef int32_t NodeIndex; /**< Node Index in the network, range
                                  from [0,num_vertices-1 ]*/
-typedef unsigned int EdgeIndex; /**< Edge Index in the network, range
+typedef int32_t EdgeIndex; /**< Edge Index in the network, range
                                  from [0,num_edges-1 ]*/
 
 /**
@@ -48,11 +47,11 @@ typedef std::unordered_map<EdgeID, EdgeIndex> EdgeIndexMap;
  */
 struct Edge
 {
-    EdgeIndex index;  /**< Index of an edge, which is continuous [0,N-1] */
-    EdgeID id;        /**< Edge ID, can be discontinuous integers */
-    NodeIndex source; /**< source node index */
-    NodeIndex target; /**< target node index */
-    double length;    /**< length of the edge polyline */
+    EdgeID id;                  /**< Edge ID, can be discontinuous integers */
+    NodeID source;              /**< source node id */
+    NodeID target;              /**< target node id */
+    Eigen::Vector3i index;      // edge index, source/target index
+    double length;              /**< length of the edge polyline */
     FMM::CORE::LineString geom; /**< the edge geometry */
 };
 

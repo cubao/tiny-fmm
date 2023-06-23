@@ -1,6 +1,12 @@
 // modified version of
 // https://github.com/cubao/headers/tree/main/include/cubao/pybind11_polyline_ruler.hpp
 
+// should sync
+// -
+// https://github.com/cubao/polyline-ruler/blob/master/src/pybind11_polyline_ruler.hpp
+// -
+// https://github.com/cubao/headers/tree/main/include/cubao/pybind11_polyline_ruler.hpp
+
 #include <pybind11/eigen.h>
 #include <pybind11/iostream.h>
 #include <pybind11/pybind11.h>
@@ -203,7 +209,7 @@ void bind_polyline_ruler(py::module &m)
                                                py::const_),
              "start"_a, "stop"_a)
         .def_static("_interpolate", &PolylineRuler::interpolate, //
-                    "A"_a, "B"_a, py::kw_only(), "t"_a, "is_wgs84"_a = false)
+                    "A"_a, "B"_a, py::kw_only(), "t"_a)
         //
         ;
 

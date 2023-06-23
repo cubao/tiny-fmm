@@ -2,6 +2,7 @@
 #define FMM_CUBAO_HELPERS_HPP
 
 #include "util/cubao_types.hpp"
+#include "cubao/eigen_helpers.hpp"
 
 #include "rapidjson/error/en.h"
 #include "rapidjson/filereadstream.h"

@@ -11,4 +11,7 @@ using RapidjsonDocument =
 using RapidjsonValue =
     rapidjson::GenericValue<rapidjson::UTF8<>, RapidjsonAllocator>;
 
+using RowVectors = Eigen::Matrix<double, Eigen::Dynamic, 3, Eigen::RowMajor>;
+using RowVectorsNx2 = Eigen::Matrix<double, Eigen::Dynamic, 2, Eigen::RowMajor>;
+
 #endif

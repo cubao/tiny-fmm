@@ -159,8 +159,10 @@ class Network
      */
     static bool candidate_compare(const MM::Candidate &a,
                                   const MM::Candidate &b);
-    void add_edge(EdgeID edge_id, NodeID source, NodeID target,
-                  const FMM::CORE::LineString &geom);
+    int add_edge(EdgeID edge_id, NodeID source, NodeID target,
+                 const FMM::CORE::LineString &geom);
+    int add_edge(EdgeID edge_id, NodeID source, NodeID target,
+                 const Eigen::Ref<const RowVectors> &polyline);
 
     // json load/dump
     bool load(const std::string &path);

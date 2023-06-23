@@ -2,6 +2,7 @@
 #include "util/debug.hpp"
 #include "util/util.hpp"
 #include "util/cubao_helpers.hpp"
+#include "cubao/polyline_ruler.hpp"
 
 #include <math.h>    // Calulating probability
 #include <algorithm> // Partial sort copy
@@ -17,19 +18,32 @@ bool Network::candidate_compare(const Candidate &a, const Candidate &b)
     if (a.dist != b.dist) {
         return a.dist < b.dist;
     } else {
-        return a.edge->index < b.edge->index;
+        return a.edge->index[0] < b.edge->index[0];
     }
 }
 
-void Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
-                       const FMM::CORE::LineString &geom)
+int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
+                      const FMM::CORE::LineString &geom)
 {
+    return add_edge(edge_id, source, target,
+                    Eigen::Map<const RowVectors>(&geom[0][0], geom.size(), 3));
+}
+
+int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
+                      const Eigen::Ref<const RowVectors> &polyline)
+{
+    if (edge_map.find(edge_id) == edge_map.end()) {
+        SPDLOG_ERROR("duplicate edge: {}", edge_id);
+        return -1;
+    }
+
+    int N = polyline.rows();
     NodeIndex s_idx, t_idx;
     if (node_map.find(source) == node_map.end()) {
         s_idx = node_id_vec.size();
         node_id_vec.push_back(source);
         node_map.insert({source, s_idx});
-        // vertex_points.push_back(geom.get_point(0));
+        vertex_points.push_back(polyline.row(0));
     } else {
         s_idx = node_map[source];
     }
@@ -37,15 +51,23 @@ void Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
         t_idx = node_id_vec.size();
         node_id_vec.push_back(target);
         node_map.insert({target, t_idx});
-        // int npoints = geom.get_num_points();
-        // vertex_points.push_back(geom.get_point(npoints - 1));
+        vertex_points.push_back(polyline.row(N - 1));
     } else {
         t_idx = node_map[target];
     }
     EdgeIndex index = edges.size();
-    edges.push_back({index, edge_id, s_idx, t_idx, 0.0, geom});
-    edge_map.insert({edge_id, index});
-};
+    FMM::CORE::LineString geom;
+    geom.resize(N);
+    // Eigen::Map<const RowVectors>(&geom[0][0], N, 3) = polyline;
+    // cubao::PolylineRuler ruler(polyline, is_wgs84);
+    // tree.add_polyline(polyline, index);
+
+    // edges.push_back({edge_id, source, target, //
+    //                  Eigen::Vector3i(index, s_idx, t_idx), ruler.length(),
+    //                  std::move(geom)});
+    // edge_map.insert({edge_id, index});
+    return index;
+}
 
 bool Network::load(const std::string &path)
 {
