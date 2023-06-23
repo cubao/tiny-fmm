@@ -30,12 +30,7 @@ void FMM::ALGORITHM::append_segs_to_line(FMM::CORE::LineString *line,
                                          const FMM::CORE::LineString &segs,
                                          int offset)
 {
-    int Npoints = segs.get_num_points();
-    for (int i = 0; i < Npoints; ++i) {
-        if (i >= offset) {
-            line->add_point(segs.get_x(i), segs.get_y(i));
-        }
-    }
+    line->insert(line->end(), segs.begin() + offset, segs.end());
 }
 
 FMM::CORE::LineString

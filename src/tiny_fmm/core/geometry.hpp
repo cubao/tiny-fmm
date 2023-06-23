@@ -27,8 +27,6 @@ namespace CORE
 using Point = Eigen::Vector3d;
 /**
  *  Linestring geometry class
- *
- *  This class wraps a boost linestring geometry.
  */
 using LineString = std::vector<Point>;
 }; // namespace CORE

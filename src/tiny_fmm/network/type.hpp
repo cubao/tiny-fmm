@@ -18,6 +18,8 @@
 
 namespace FMM
 {
+using RowVectors = Eigen::Matrix<double, Eigen::Dynamic, 3, Eigen::RowMajor>;
+
 namespace NETWORK
 {
 typedef int64_t NodeID;    /**< Node ID in the network, can be discontinuous
@@ -53,6 +55,15 @@ struct Edge
     Eigen::Vector3i index;      // edge index, source/target index
     double length;              /**< length of the edge polyline */
     FMM::CORE::LineString geom; /**< the edge geometry */
+
+    Eigen::Map<RowVectors> as_row_vectors()
+    {
+        return Eigen::Map<RowVectors>(&geom[0][0], geom.size(), 3);
+    }
+    Eigen::Map<const RowVectors> as_row_vectors() const
+    {
+        return Eigen::Map<const RowVectors>(&geom[0][0], geom.size(), 3);
+    }
 };
 
 } // namespace NETWORK

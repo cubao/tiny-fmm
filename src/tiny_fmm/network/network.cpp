@@ -32,17 +32,17 @@ int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
 int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
                       const Eigen::Ref<const RowVectors> &polyline)
 {
-    if (edge_map.find(edge_id) == edge_map.end()) {
+    if (edge_map.find(edge_id) != edge_map.end()) {
         SPDLOG_ERROR("duplicate edge: {}", edge_id);
         return -1;
     }
 
-    int N = polyline.rows();
+    const int N = polyline.rows();
     NodeIndex s_idx, t_idx;
     if (node_map.find(source) == node_map.end()) {
         s_idx = node_id_vec.size();
         node_id_vec.push_back(source);
-        node_map.insert({source, s_idx});
+        node_map.emplace(source, s_idx);
         vertex_points.push_back(polyline.row(0));
     } else {
         s_idx = node_map[source];
@@ -50,7 +50,7 @@ int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
     if (node_map.find(target) == node_map.end()) {
         t_idx = node_id_vec.size();
         node_id_vec.push_back(target);
-        node_map.insert({target, t_idx});
+        node_map.emplace(target, t_idx);
         vertex_points.push_back(polyline.row(N - 1));
     } else {
         t_idx = node_map[target];
@@ -58,14 +58,13 @@ int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
     EdgeIndex index = edges.size();
     FMM::CORE::LineString geom;
     geom.resize(N);
-    // Eigen::Map<const RowVectors>(&geom[0][0], N, 3) = polyline;
-    // cubao::PolylineRuler ruler(polyline, is_wgs84);
-    // tree.add_polyline(polyline, index);
-
-    // edges.push_back({edge_id, source, target, //
-    //                  Eigen::Vector3i(index, s_idx, t_idx), ruler.length(),
-    //                  std::move(geom)});
-    // edge_map.insert({edge_id, index});
+    Eigen::Map<RowVectors>(&geom[0][0], N, 3) = polyline;
+    cubao::PolylineRuler ruler(polyline, is_wgs84);
+    edges.push_back({edge_id, source, target,              //
+                     Eigen::Vector3i(index, s_idx, t_idx), //
+                     ruler.length(), std::move(geom)});
+    edge_map.emplace(edge_id, index);
+    // tree.add_polyline(ruler, index);
     return index;
 }
 
@@ -115,27 +114,26 @@ RapidjsonValue Network::to_json(RapidjsonAllocator &allocator) const
     RapidjsonValue edges(rapidjson::kArrayType);
     for (auto &e : this->edges) {
         RapidjsonValue edge(rapidjson::kObjectType);
-        edge.AddMember("id", RapidjsonValue((int64_t)e.id), allocator);
-        edge.AddMember("source", RapidjsonValue((int64_t)get_node_id(e.source)),
-                       allocator);
-        edge.AddMember("target", RapidjsonValue((int64_t)get_node_id(e.target)),
-                       allocator);
+        edge.AddMember("id", RapidjsonValue(e.id), allocator);
+        edge.AddMember("source", RapidjsonValue(e.source), allocator);
+        edge.AddMember("target", RapidjsonValue(e.target), allocator);
         RapidjsonValue coordinates(rapidjson::kArrayType);
         auto &G = e.geom;
-        int N = G.size();
+        const int N = G.size();
+        coordinates.Reserve(N, allocator);
         for (int i = 0; i < N; ++i) {
-            RapidjsonValue xy(rapidjson::kArrayType);
-            xy.Reserve(3, allocator);
-            xy.PushBack(RapidjsonValue(G[i][0]), allocator);
-            xy.PushBack(RapidjsonValue(G[i][1]), allocator);
-            xy.PushBack(RapidjsonValue(G[i][2]), allocator);
-            coordinates.PushBack(xy, allocator);
+            RapidjsonValue xyz(rapidjson::kArrayType);
+            xyz.Reserve(3, allocator);
+            xyz.PushBack(RapidjsonValue(G[i][0]), allocator);
+            xyz.PushBack(RapidjsonValue(G[i][1]), allocator);
+            xyz.PushBack(RapidjsonValue(G[i][2]), allocator);
+            coordinates.PushBack(xyz, allocator);
         }
         edge.AddMember("coordinates", coordinates, allocator);
         edges.PushBack(edge, allocator);
     }
     RapidjsonValue json(rapidjson::kObjectType);
-    // json.AddMember("srid", RapidjsonValue(srid), allocator);
+    json.AddMember("is_wgs84", RapidjsonValue(is_wgs84), allocator);
     json.AddMember("edges", edges, allocator);
     return json;
 }
@@ -416,10 +414,5 @@ LineString Network::route2geometry(const std::vector<EdgeIndex> &path) const
 void Network::append_segs_to_line(LineString *line, const LineString &segs,
                                   int offset)
 {
-    int Npoints = 0; // segs.get_num_points();
-    for (int i = 0; i < Npoints; ++i) {
-        if (i >= offset) {
-            // line->add_point(segs.get_x(i), segs.get_y(i));
-        }
-    }
+    line->insert(line->end(), segs.begin() + offset, segs.end());
 }
