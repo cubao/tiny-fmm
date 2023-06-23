@@ -9,6 +9,7 @@
 #include "nanoflann_kdtree.hpp"
 #include "quiver.hpp"
 #include "polyline_ruler.hpp"
+#include <map>
 
 namespace cubao
 {
