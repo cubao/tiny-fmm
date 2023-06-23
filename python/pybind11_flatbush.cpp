@@ -1,6 +1,12 @@
 // modified version of
 // https://github.com/cubao/headers/tree/main/include/cubao/pybind11_flatbush.hpp
 
+// should sync
+// -
+// https://github.com/cubao/fast-crossing/blob/master/src/pybind11_flatbush.hpp
+// -
+// https://github.com/cubao/headers/tree/main/include/cubao/pybind11_flatbush.hpp
+
 #include <pybind11/eigen.h>
 #include <pybind11/iostream.h>
 #include <pybind11/pybind11.h>
@@ -34,14 +40,15 @@ void bind_flatbush(py::module &m)
              py::overload_cast<const Eigen::Ref<const FlatBush::PolylineType> &,
                                int>(&FlatBush::Add),
              "polyline"_a, //
-             py::kw_only(), "label0"_a)
+             py::kw_only(), "label0"_a = -1)
 
         .def(
             "add",
             [](FlatBush &self,              //
                const Eigen::Vector4d &bbox, //
                int label0, int label1) -> size_t {
-                return self.Add(bbox[0], bbox[1], bbox[2], bbox[3]);
+                return self.Add(bbox[0], bbox[1], bbox[2], bbox[3], //
+                                label0, label1);
             },
             "box"_a, py::kw_only(), //
             "label0"_a = -1, "label1"_a = -1)
