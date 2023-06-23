@@ -2,6 +2,7 @@
 #include "util/debug.hpp"
 #include "util/util.hpp"
 #include "util/cubao_helpers.hpp"
+#include "cubao/polyline_ruler.hpp"
 
 #include <math.h>    // Calulating probability
 #include <algorithm> // Partial sort copy
@@ -56,10 +57,15 @@ int Network::add_edge(EdgeID edge_id, NodeID source, NodeID target,
     }
     EdgeIndex index = edges.size();
     FMM::CORE::LineString geom;
-    // TODO
-    edges.push_back({edge_id, source, target, //
-                     Eigen::Vector3i(index, s_idx, t_idx), 0.0, geom});
-    edge_map.insert({edge_id, index});
+    geom.resize(N);
+    // Eigen::Map<const RowVectors>(&geom[0][0], N, 3) = polyline;
+    // cubao::PolylineRuler ruler(polyline, is_wgs84);
+    // tree.add_polyline(polyline, index);
+
+    // edges.push_back({edge_id, source, target, //
+    //                  Eigen::Vector3i(index, s_idx, t_idx), ruler.length(),
+    //                  std::move(geom)});
+    // edge_map.insert({edge_id, index});
     return index;
 }
 
